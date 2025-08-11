@@ -10,27 +10,58 @@ User Stories:
 - As a user, I want to click a “Play Again” button to start a new game for another chance.
 
 Psuedocode:
-// Show welcome screen to the player
-// Deal two cards to the player
-// Deal two cards to the dealer
-// Show player’s cards and one dealer card face-up
+// Define card suits and ranks constants
+// Define variables: deck, playerHand, dealerHand, playerScore, dealerScore, gameMessage, gameState
 
-// While player wants to HIT
-    // Deal one card to the player
-    // Update player’s card total
-// End While
-// Reveal dealer’s hidden card
-// While dealer’s card total is less than 17
-    // Deal one card to the dealer
-    // Update dealer’s card total
-// End While
+// Select player's cards display element
+// Select dealer's cards display element
+// Select player's score display element
+// Select dealer's score display element
+// Select game message display element
+// Select buttons: Hit, Stand, Play Again
 
-// COMPARE player’s and dealer’s totals
-// IF player’s total is greater than dealer’s total AND less than or equal to 21
-    // Show message that player wins
-// ELSE IF dealer’s total is greater than player’s total AND less than or equal to 21
-    // Show message that dealer wins
-// ELSE
-    // Show message for a tie or bust
-    
-// Ask player if they want to play again
+// Add event listener to Hit button
+// Add event listener to Stand button
+// Add event listener to Play Again button
+
+// Create and shuffle deck
+// Reset playerHand and dealerHand to empty arrays
+// Deal 2 cards to playerHand
+// Deal 2 cards to dealerHand (one face down)
+// Calculate initial scores
+// Set gameState to 'playerTurn'
+// Render the initial game state
+
+// On Hit button click:
+//   Deal 1 card to playerHand
+//   Update playerScore
+//   If playerScore > 21:
+//      Set gameMessage to "Player loses! Dealer wins."
+//      Set gameState to 'gameOver'
+//   Render updated state
+
+// On Stand button click:
+//   Set gameState to 'dealerTurn'
+//   Reveal dealer's hidden card
+//   While dealerScore < 17:
+//      Deal 1 card to dealerHand
+//      Update dealerScore
+//   Compare scores:
+//      If dealerScore > 21 or playerScore > dealerScore:
+//          Player wins
+//      Else if dealerScore > playerScore:
+//          Dealer wins
+//      Else:
+//          It's a tie
+//   Set gameMessage accordingly
+//   Set gameState to 'gameOver'
+//   Render updated state
+
+// Display player and dealer cards and scores
+// Show/hide face-down dealer card as appropriate
+// Display gameMessage
+// Show or hide Hit and Stand buttons based on gameState
+
+// On Play Again click:
+//   Reset all variables
+//   Call init function to start a new game
