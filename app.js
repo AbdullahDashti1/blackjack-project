@@ -1,13 +1,13 @@
 /*-------------------------------- Constants --------------------------------*/
 
 const cardSuits = ['♠', '♥', '♦', '♣'];
-const cardRanks = ['Ace', 'King', 'Queen', 'Jack', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
+const cardRanks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let deck = [];
-let playerHand = [];
-let dealerHand = [];
+let deck;
+let playerHand;
+let dealerHand;
 let playerScore;
 let dealerScore;
 let gameMessage;
@@ -15,14 +15,12 @@ let gameState;
 
 /*------------------------ Cached Element References ------------------------*/
 
-// const playerCardEl = document.addEventListener('#player-card');
-// const dealerCardEl = document.addEventListener('#dealer-card');
-// const playerScoreEl = document.addEventListener('player-score');
-// const dealerScoreEl = document.addEventListener('dealer-score');
-// const gameMessageEl = document.addEventListener('game-message');
-// const hitEl = document.addEventListener('hit');
-// const standEl = document.addEventListener('stand');
-// const playAgainEl = document.addEventListener('play-again');
+// const playerHandEL = document.querySelector('#player-hand');
+// const dealerHandEl = document.querySelector('#dealer-hand');
+// const startButtonEl = document.querySelector('#start-button');
+// const hitButtonEl = document.querySelector('#hit-button');
+// const standButtonEl = document.querySelector('#stand-button');
+// const gameMessageEl = document.querySelector('#game-message');
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -47,41 +45,63 @@ and for loops. The last chunk of code means that the first card is temporarily s
 and then puts the first saved card in the second position.
 */
 
-function shuffleCards() {
-    for (let i = 0; i < 100; i++) {
-        let firstCard = Math.floor((Math.random() * createDeck.length));
-        let secondCard = Math.floor((Math.random() * createDeck.length));
+function shuffleCards(deck) {
+    for (let i = 0; i < 1000; i++) {
+        let firstCard = Math.floor((Math.random() * deck.length));
+        let secondCard = Math.floor((Math.random() * deck.length));
 
-        let firstPoisition = createDeck[firstCard];
-        createDeck[firstCard] = createDeck[secondCard];
-        createDeck[secondCard] = firstPoisition;
+        let temp = deck[firstCard];
+        deck[firstCard] = deck[secondCard];
+        deck[secondCard] = temp;
     }
     return deck;
 };
 
-console.log(deck);
+/*
+What this code basically does it that it 
+*/
+
+function cardScore(hand) {
+    let score = 0;
+
+    for (let i = 0; i < hand.length; i++) {
+        let card = hand[i].slice(0, -1); 
+
+        if (card === 'A' || card === 'K' || card === 'Q' || card === 'J') {
+            score += 10;
+        } else {
+            score += Number(card);
+        }
+    }
+
+    return score;
+}
+
+/*
+What this code basically does is that it starts a game to where a user is introduced with 2 shuffled cards, as well as the dealer recieves 2 shuffled cards. 
+The functions callbacked in the deck varirable returns the shuffled cards as we as the deck we created. The player and the dealer begin with 2 cards, where 
+we use the pop method to get the last array and implement it in this player/dealer hand. We then use the score function to determine what is the score
+when we first recieve the cards. 
+*/
 
 function startGame() {
+    let deck = shuffleCards(createDeck());
 
-    let shuffleDeck = shuffleCards(createDeck());
+    playerHand = [deck.pop(), deck.pop()];
+    dealerHand = [deck.pop(), deck.pop()];
 
-    function dealPlayerCard() {
-        return [shuffleDeck[0], shuffleDeck[1]];
-    }
+    playerScore = cardScore(playerHand);
+    dealerScore = cardScore(dealerHand);
 
-    function dealDealerCard() {
-        return [shuffleDeck[2], shuffleDeck[3]];
-    }
-
-    let playerCard = dealPlayerCard();
-    let dealerCard = dealDealerCard();
-
-    console.log(playerCard);
-    console.log(dealerCard);
-};
+    console.log(playerHand, playerScore);
+    console.log(dealerHand, dealerScore);
+}
 
 startGame();
 
+
 /*----------------------------- Event Listeners -----------------------------*/
 
-
+// startButtonEl.addEventListener('click', startGame);
+// hitButtonEl.addEventListener('click', hit);
+// standButtonEl.addEventListener('click', stand);
