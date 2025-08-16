@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack Game</title>
 </head>
+
 <body>
     <h1>Blackjack</h1>
-    <h2>Dealer</h2>
-    <h3 id = 'dealer cards'></h3>
-    <div>
-        <p id = 'player-score'>PLAYER SCORE:</p>
-        <p id = 'dealer-score'>DEALER SCORE:</p>
-    </div> 
 
     <div>
-        <p>ACTION:</p>
-        <button>HIT</button>
-        <button>STAND</button>
-    </div>
-    <div>
-        <p>RESTART:</p>
-        <button>START GAME</button>
+        <h3>Player's Hand:</h3>
+        <div id='player-hand'></div>
     </div>
 
-<img id="card" src="" alt="Random card">
-<br>
-<button id="drawCardBtn">Draw Card</button>
+    <div>
+        <h3>Dealer's Hand:</h3>
+        <div id='dealer-hand'></div>
+    </div>
+
+    <div>
+        <h3>ACTION:</h3>
+        <button id='hit-button'>HIT</button>
+        <button id='stand-button'>STAND</button>
+    </div>
+
+    <div> 
+        <h3>START/RESTART</h3>
+        <button id='start-button'>Start Game</button>
+        <button id='restart-button'>Restart Game</button>
+    </div>
+
+    <div id='game-message'></div>
+
+    <script src="app.js"></script>
 </body>
+
 </html>
