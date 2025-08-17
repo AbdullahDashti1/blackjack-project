@@ -127,7 +127,6 @@ function startGame() {
 
     gameMessage = '';
     gameStarted = true;
-    renderBlackjack();
 
     startButtonEl.disabled = true;
     restartButtonEl.disabled = false;
@@ -150,6 +149,8 @@ function startGame() {
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
     }
+
+    renderBlackjack();
 }
 
 function hitAction() {
@@ -215,6 +216,8 @@ function winnerDecision(){
     } else if (playerScore === dealerScore) {
         gameMessage = 'Tie 🤝';
     };
+
+    renderBlackjack();
 }
 
 function restartGame(){
