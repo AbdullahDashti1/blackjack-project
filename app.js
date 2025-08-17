@@ -27,11 +27,6 @@ const restartButtonEl = document.querySelector('#restart-button');
 
 /*-------------------------------- Functions --------------------------------*/
 
-/*
-What this code basically does is that it is a nested loop that goes through both the cardSuits and cardRanks array 
-and creates a concatenated string displaying both the suit and rank of each card.
-*/
-
 function createDeck() {
     deck = [];
     for (let i = 0; i < cardSuits.length; i++) {
@@ -41,12 +36,6 @@ function createDeck() {
     }
     return deck;
 };
-
-/* 
-What this code basically does is that it shuffles the deck through 100 loops (for accuracy purposes) using the code logic of math.floor 
-and for loops. The last chunk of code means that the first card is temporarily saved, then it stores the second card in the first card position,
-and then puts the first saved card in the second position.
-*/
 
 function shuffleCards(deck) {
     for (let i = 0; i < 4321; i++) {
@@ -60,24 +49,11 @@ function shuffleCards(deck) {
     return deck;
 };
 
-/*
-What this code basically does is that it create a deck variable to where it goes through the shuffleCards function which obviously shuffles the cards 
-and then through createDeck function which concatenates the constants of cardRanks and cardSuits. Below this line of code, we see ghat there is a variable
-playerHand and dealerHand that selects 2 cards for both the dealer and the player by using the array iterator method of pop, in which it returns the
-last element of the array, and we used it twice per hand. 
-*/
-
 function cardHolders() {
     deck = shuffleCards(createDeck());
     playerHand = [deck.pop(), deck.pop()];
     dealerHand = [deck.pop(), deck.pop()];
 }
-
-/*
-What this code basically does is that it calculates both the player score and the dealer score, it starts at 0, then we use a for loop statement throughout
-the player's hand and use the slice method to only consider the rank of the card for this particular case, neglecting the rank of the card. To which we create
-a if else statement of the card ranks, and we use number(card) to convert the cardRanks variable from a string to number, which is used for calculation. 
-*/
 
 function calculatePlayerScore() {
     playerScore = 0;
@@ -115,12 +91,6 @@ function calculateDealerScore() {
     return dealerScore;
 }
 
-/*
-What this code basically does is that it render the game using the speciifc elements we want to be displayed in the web page through the usage of textContent
-function which will enable us to display whatever text we need to be displayed in the webpage. Additionally, we could use speciifc syntaxes we need for it
-such as array iterators or special string printing and whatnot as shown below. 
-*/
-
 function renderBlackjack() {
     playerHandEl.textContent = playerHand.join(', ');
     dealerHandEl.textContent = dealerHand.join(', ');
@@ -128,12 +98,6 @@ function renderBlackjack() {
     dealerScoreEl.textContent = `Dealer score is: ${dealerScore}`;
     gameMessageEl.textContent = gameMessage;
 }
-/*
-What this code basically does is that it starts a game to where a user is introduced with 2 shuffled cards, as well as the dealer recieves 2 shuffled cards. 
-The functions callbacked in the deck varirable returns the shuffled cards as we as the deck we created. The player and the dealer begin with 2 cards, where 
-we use the pop method to get the last array and implement it in this player/dealer hand. We then use the score function to determine what is the score
-when we first recieve the cards. 
-*/
 
 function startGame() {
     cardHolders();
@@ -143,13 +107,6 @@ function startGame() {
 
     renderBlackjack();
 }
-
-/*
-What this code basically does is that the user is able to press the hit button after starting the game, that depends if the user wants to continue or not.
-We use the push iterator to add one more card for the player, through the already deck.pop array, which consists of what the player has in their hands. Then 
-we run a if, else if, else logic for how the win or loss works here, if the player exceeds 21 score, we lose, if the dealer does, they lose; and then we render
-the function so that it displays in the webpage. 
-*/
 
 function hitAction() {
     playerHand.push(deck.pop());
@@ -166,13 +123,6 @@ function hitAction() {
     renderBlackjack();
 }
 
-/*
-What this code basically does is that if the user decides not to draw a card, or known as the "stand" action, the dealer is now prompt to select a card
-under the condition that they cannot draw beyond scoring 17 points or higher. Meaning that only 16 and lower they are able to draw, and if higher, they 
-are forced to stay. We use the while function to loop around the code many times until the condition, which is if the dealer score is less than or equal to
-16, in which now the code will end once it has met. 
-*/
-
 function standAction() {
     while (dealerScore <= 16) {
         dealerHand.push(deck.pop());
@@ -188,11 +138,6 @@ function standAction() {
     };
 }
 
-/*
-What this code basically does is that we use a function that returns the win/loss message for the user. We compile a if else if statements to detect whether
-the player won or the dealer won, or even if they tied. 
-*/
-
 function winnerDecision(){
     if (playerScore > 21) {
         gameMessage = 'Player Busted... Dealer Wins ❌';
@@ -206,12 +151,6 @@ function winnerDecision(){
         gameMessage = 'Tie 🤝';
     };
 }
-
-/*
-What this code basically does is that we return the hand variables and we put them in a empty array to simulate a restarted game, as well as reverting the
-score back to 0. Then we display a message to the user that the game has indeed been restarted and can play it again.  We then use the cardHolders function
-to bring back the cards dealt, and we caclulate the scores again. 
-*/
 
 function restartGame(){
     playerHand = [];
