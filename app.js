@@ -61,11 +61,11 @@ function shuffleCards(deck) {
 What this code basically does it that it 
 */
 
-function cardScore(hand) {
+function calculatePlayerScore() {
     let score = 0;
 
-    for (let i = 0; i < hand.length; i++) {
-        let card = hand[i].slice(0, -1); 
+    for (let i = 0; i < playerHand.length; i++) {
+        let card = playerHand[i].slice(0, -1); 
 
         if (card === 'A' || card === 'K' || card === 'Q' || card === 'J') {
             score += 10;
@@ -77,6 +77,21 @@ function cardScore(hand) {
     return score;
 }
 
+function calculateDealerScore() {
+    let score = 0;
+
+    for (let i = 0; i < dealerHand.length; i++) {
+        let card = dealerHand[i].slice(0, -1); 
+
+        if (card === 'A' || card === 'K' || card === 'Q' || card === 'J') {
+            score += 10;
+        } else {
+            score += Number(card);
+        }
+    }
+
+    return score;
+}
 /*
 What this code basically does is that it starts a game to where a user is introduced with 2 shuffled cards, as well as the dealer recieves 2 shuffled cards. 
 The functions callbacked in the deck varirable returns the shuffled cards as we as the deck we created. The player and the dealer begin with 2 cards, where 
@@ -85,13 +100,13 @@ when we first recieve the cards.
 */
 
 function startGame() {
-    let deck = shuffleCards(createDeck());
+    deck = shuffleCards(createDeck());
 
     playerHand = [deck.pop(), deck.pop()];
     dealerHand = [deck.pop(), deck.pop()];
 
-    playerScore = cardScore(playerHand);
-    dealerScore = cardScore(dealerHand);
+    playerScore = calculatePlayerScore(playerHand);
+    dealerScore = calculateDealerScore(dealerHand);
 
     console.log(playerHand, playerScore);
     console.log(dealerHand, dealerScore);
