@@ -23,6 +23,7 @@ const startButtonEl = document.querySelector('#start-button');
 const hitButtonEl = document.querySelector('#hit-button');
 const gameMessageEl = document.querySelector('#game-message');
 const standButtonEl = document.querySelector('#stand-button');
+const restartButtonEl = document.querySelector('#restart-button');
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -140,9 +141,6 @@ function startGame() {
     playerScore = calculatePlayerScore(playerHand);
     dealerScore = calculateDealerScore(dealerHand);
 
-    console.log(playerHand, playerScore);
-    console.log(dealerHand, dealerScore);
-
     renderBlackjack();
 }
 
@@ -209,8 +207,30 @@ function winnerDecision(){
     };
 }
 
+/*
+What this code basically does is that we return the hand variables and we put them in a empty array to simulate a restarted game, as well as reverting the
+score back to 0. Then we display a message to the user that the game has indeed been restarted and can play it again.  We then use the cardHolders function
+to bring back the cards dealt, and we caclulate the scores again. 
+*/
+
+function restartGame(){
+    playerHand = [];
+    dealerHand = [];
+    playerScore = 0;
+    dealerScore = 0;
+    gameMessage = 'Game Has Been Restarted, You Can Play Again.';
+
+    cardHolders();
+
+    playerScore = calculatePlayerScore(playerHand);
+    dealerScore = calculateDealerScore(dealerHand);
+
+    renderBlackjack();
+}
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 startButtonEl.addEventListener('click', startGame);
 hitButtonEl.addEventListener('click', hitAction);
 standButtonEl.addEventListener('click', standAction);
+restartButtonEl.addEventListener('click', restartGame);
