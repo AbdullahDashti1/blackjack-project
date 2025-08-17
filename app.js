@@ -46,7 +46,7 @@ and then puts the first saved card in the second position.
 */
 
 function shuffleCards(deck) {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 4321; i++) {
         let firstCard = Math.floor((Math.random() * deck.length));
         let secondCard = Math.floor((Math.random() * deck.length));
 
@@ -58,14 +58,29 @@ function shuffleCards(deck) {
 };
 
 /*
-What this code basically does it that it 
+What this code basically does is that it create a deck variable to where it goes through the shuffleCards function which obviously shuffles the cards 
+and then through createDeck function which concatenates the constants of cardRanks and cardSuits. Below this line of code, we see ghat there is a variable
+playerHand and dealerHand that selects 2 cards for both the dealer and the player by using the array iterator method of pop, in which it returns the
+last element of the array, and we used it twice per hand. 
+*/
+
+function cardHolders() {
+    deck = shuffleCards(createDeck());
+    playerHand = [deck.pop(), deck.pop()];
+    dealerHand = [deck.pop(), deck.pop()];
+}
+
+/*
+What this code basically does is that it calculates both the player score and the dealer score, it starts at 0, then we use a for loop statement throughout
+the player's hand and use the slice method to only consider the rank of the card for this particular case, neglecting the rank of the card. To which we create
+a if else statement of the card ranks, and we use number(card) to convert the cardRanks variable from a string to number, which is used for calculation. 
 */
 
 function calculatePlayerScore() {
     let score = 0;
 
     for (let i = 0; i < playerHand.length; i++) {
-        let card = playerHand[i].slice(0, -1); 
+        let card = playerHand[i].slice(0, -1);
 
         if (card === 'A' || card === 'K' || card === 'Q' || card === 'J') {
             score += 10;
@@ -81,7 +96,7 @@ function calculateDealerScore() {
     let score = 0;
 
     for (let i = 0; i < dealerHand.length; i++) {
-        let card = dealerHand[i].slice(0, -1); 
+        let card = dealerHand[i].slice(0, -1);
 
         if (card === 'A' || card === 'K' || card === 'Q' || card === 'J') {
             score += 10;
@@ -100,10 +115,7 @@ when we first recieve the cards.
 */
 
 function startGame() {
-    deck = shuffleCards(createDeck());
-
-    playerHand = [deck.pop(), deck.pop()];
-    dealerHand = [deck.pop(), deck.pop()];
+    cardHolders();
 
     playerScore = calculatePlayerScore(playerHand);
     dealerScore = calculateDealerScore(dealerHand);
