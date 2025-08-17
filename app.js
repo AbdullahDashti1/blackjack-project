@@ -6,6 +6,7 @@ const cardRanks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', 
 /*---------------------------- Variables (state) ----------------------------*/
 
 let deck;
+let score;
 let playerHand;
 let dealerHand;
 let playerScore;
@@ -15,12 +16,11 @@ let gameState;
 
 /*------------------------ Cached Element References ------------------------*/
 
-// const playerHandEL = document.querySelector('#player-hand');
-// const dealerHandEl = document.querySelector('#dealer-hand');
-// const startButtonEl = document.querySelector('#start-button');
-// const hitButtonEl = document.querySelector('#hit-button');
-// const standButtonEl = document.querySelector('#stand-button');
-// const gameMessageEl = document.querySelector('#game-message');
+const playerHandEl = document.querySelector('#player-hand');
+const dealerHandEl = document.querySelector('#dealer-hand');
+const playerScoreEl = document.querySelector('#player-score');
+const dealerScoreEl = document.querySelector('#dealer-score')
+const startButtonEl = document.querySelector('#start-button');
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -30,7 +30,7 @@ and creates a concatenated string displaying both the suit and rank of each card
 */
 
 function createDeck() {
-    let deck = [];
+    deck = [];
     for (let i = 0; i < cardSuits.length; i++) {
         for (let j = 0; j < cardRanks.length; j++) {
             deck.push(cardRanks[j] + cardSuits[i]);
@@ -50,9 +50,9 @@ function shuffleCards(deck) {
         let firstCard = Math.floor((Math.random() * deck.length));
         let secondCard = Math.floor((Math.random() * deck.length));
 
-        let temp = deck[firstCard];
+        let storeCard = deck[firstCard];
         deck[firstCard] = deck[secondCard];
-        deck[secondCard] = temp;
+        deck[secondCard] = storeCard;
     }
     return deck;
 };
@@ -77,7 +77,7 @@ a if else statement of the card ranks, and we use number(card) to convert the ca
 */
 
 function calculatePlayerScore() {
-    let score = 0;
+    score = 0;
 
     for (let i = 0; i < playerHand.length; i++) {
         let card = playerHand[i].slice(0, -1);
@@ -93,7 +93,7 @@ function calculatePlayerScore() {
 }
 
 function calculateDealerScore() {
-    let score = 0;
+    score = 0;
 
     for (let i = 0; i < dealerHand.length; i++) {
         let card = dealerHand[i].slice(0, -1);
@@ -106,6 +106,17 @@ function calculateDealerScore() {
     }
 
     return score;
+}
+
+/*
+
+*/
+
+function renderBlackjack(){
+    playerHandEl.textContent = playerHand.join(' ');
+    dealerHandEl.textContent = dealerHand.join(' ');
+    playerScoreEl.textContent = `Player score is: ${playerScore}`;
+    dealerScoreEl.textContent = `Dealer score is: ${dealerScore}`;
 }
 /*
 What this code basically does is that it starts a game to where a user is introduced with 2 shuffled cards, as well as the dealer recieves 2 shuffled cards. 
@@ -122,13 +133,21 @@ function startGame() {
 
     console.log(playerHand, playerScore);
     console.log(dealerHand, dealerScore);
+
+    renderBlackjack();
 }
 
-startGame();
+/*
+
+*/
+
+// function hitAction(){
+//     card = deck.pop();
+// }
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-// startButtonEl.addEventListener('click', startGame);
-// hitButtonEl.addEventListener('click', hit);
-// standButtonEl.addEventListener('click', stand);
+startButtonEl.addEventListener('click', startGame);
+hitButtonEl.addEventListener('click', hit);
+standButtonEl.addEventListener('click', stand);
