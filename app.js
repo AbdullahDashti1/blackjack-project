@@ -21,7 +21,8 @@ const playerScoreEl = document.querySelector('#player-score');
 const dealerScoreEl = document.querySelector('#dealer-score')
 const startButtonEl = document.querySelector('#start-button');
 const hitButtonEl = document.querySelector('#hit-button');
-const gameMessageEl = document.querySelector('#game-message')
+const gameMessageEl = document.querySelector('#game-message');
+const standButtonEl = document.querySelector('#stand-button');
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -159,9 +160,7 @@ function hitAction() {
     dealerScore = calculateDealerScore();
 
     if (playerScore > 21) {
-        gameMessage = 'Player Busted... Dealer Wins 😭'
-    } else if (dealerScore > 21) {
-        gameMessage = 'Dealer Busted... Player Wins 😀'
+        gameMessage = 'Player Busted... Dealer Wins ❌';
     } else {
         gameMessage = ' ';
     };
@@ -170,13 +169,48 @@ function hitAction() {
 }
 
 /*
-
+What this code basically does is that if the user decides not to draw a card, or known as the "stand" action, the dealer is now prompt to select a card
+under the condition that they cannot draw beyond scoring 17 points or higher. Meaning that only 16 and lower they are able to draw, and if higher, they 
+are forced to stay. We use the while function to loop around the code many times until the condition, which is if the dealer score is less than or equal to
+16, in which now the code will end once it has met. 
 */
 
-function standAction(){
-    renderBlackjack();
+function standAction() {
+    while (dealerScore <= 16) {
+        dealerHand.push(deck.pop());
+        dealerScore = calculateDealerScore();
+    };
+
+    if (dealerScore > 21) {
+        gameMessage = 'Dealer Busted... Player Wins ✅';
+
+        winnerDecision();
+
+        renderBlackjack();
+    };
 }
+
+/*
+What this code basically does is that we use a function that returns the win/loss message for the user. We compile a if else if statements to detect whether
+the player won or the dealer won, or even if they tied. 
+*/
+
+function winnerDecision(){
+    if (playerScore > 21) {
+        gameMessage = 'Player Busted... Dealer Wins ❌';
+    } else if (dealerScore > 21) {
+        gameMessage = 'Dealer Busted... Player Wins ✅';
+    } else if (playerScore > dealerScore) {
+        gameMessage = 'Player Wins ✅';
+    } else if (playerScore < dealerScore) {
+        gameMessage = 'Dealer Wins ❌';
+    } else if (playerScore === dealerScore) {
+        gameMessage = 'Tie 🤝';
+    };
+}
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 startButtonEl.addEventListener('click', startGame);
 hitButtonEl.addEventListener('click', hitAction);
+standButtonEl.addEventListener('click', standAction);
