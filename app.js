@@ -122,8 +122,8 @@ function renderBlackjack() {
 function startGame() {
     cardHolders();
 
-    playerScore = calculatePlayerScore(playerHand);
-    dealerScore = calculateDealerScore(dealerHand);
+    playerScore = calculatePlayerScore();
+    dealerScore = calculateDealerScore();
 
     gameMessage = '';
     gameStarted = true;
@@ -222,8 +222,8 @@ function restartGame(){
 
     cardHolders();
 
-    playerScore = calculatePlayerScore(playerHand);
-    dealerScore = calculateDealerScore(dealerHand);
+    playerScore = calculatePlayerScore();
+    dealerScore = calculateDealerScore();
 
     gameStarted = true;
     standButtonEl.disabled = false;
