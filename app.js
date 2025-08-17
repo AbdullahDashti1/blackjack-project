@@ -133,6 +133,23 @@ function startGame() {
     restartButtonEl.disabled = false;
     hitButtonEl.disabled = false;
     standButtonEl.disabled = false;
+
+    if (playerScore === 21 && dealerScore === 21) {
+        gameMessage = "Tie with Blackjacks 🤝";
+        gameStarted = false;
+        hitButtonEl.disabled = true;
+        standButtonEl.disabled = true;
+    } else if (playerScore === 21) {
+        gameMessage = "Blackjack! Player Wins 👑";
+        gameStarted = false;
+        hitButtonEl.disabled = true;
+        standButtonEl.disabled = true;
+    } else if (dealerScore === 21) {
+        gameMessage = "Dealer has Blackjack 💩";
+        gameStarted = false;
+        hitButtonEl.disabled = true;
+        standButtonEl.disabled = true;
+    }
 }
 
 function hitAction() {
