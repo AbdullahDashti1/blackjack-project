@@ -179,6 +179,7 @@ function standAction() {
 
 function winnerDecision(){
     gameStarted = false;
+    hitButtonEl.disabled = true;
     standButtonEl.disabled = true;
 
     if (playerScore > 21) {
