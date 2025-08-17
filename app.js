@@ -135,17 +135,17 @@ function startGame() {
     standButtonEl.disabled = false;
 
     if (playerScore === 21 && dealerScore === 21) {
-        gameMessage = "Tie with Blackjacks 🤝";
+        gameMessage = "Tie 🤝";
         gameStarted = false;
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
     } else if (playerScore === 21) {
-        gameMessage = "Blackjack! Player Wins 👑";
+        gameMessage = "Player Wins 👑";
         gameStarted = false;
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
     } else if (dealerScore === 21) {
-        gameMessage = "Dealer has Blackjack 💩";
+        gameMessage = "Dealer Wins 💩";
         gameStarted = false;
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
@@ -172,6 +172,11 @@ function hitAction() {
         gameStarted = false;
         standButtonEl.disabled = true;
         hitButtonEl.disabled = true;
+    } else if (dealerScore === 21) {
+        gameMessage = "Dealer Wins 💩";
+        gameStarted = false;
+        hitButtonEl.disabled = true;
+        standButtonEl.disabled = true;
     } else {
         standButtonEl.disabled = false;
     }
