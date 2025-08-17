@@ -6,7 +6,6 @@ const cardRanks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', 
 /*---------------------------- Variables (state) ----------------------------*/
 
 let deck;
-let score;
 let playerHand;
 let dealerHand;
 let playerScore;
@@ -21,6 +20,8 @@ const dealerHandEl = document.querySelector('#dealer-hand');
 const playerScoreEl = document.querySelector('#player-score');
 const dealerScoreEl = document.querySelector('#dealer-score')
 const startButtonEl = document.querySelector('#start-button');
+const hitButtonEl = document.querySelector('#hit-button');
+const gameMessageEl = document.querySelector('#game-message')
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -77,46 +78,53 @@ a if else statement of the card ranks, and we use number(card) to convert the ca
 */
 
 function calculatePlayerScore() {
-    score = 0;
+    playerScore = 0;
 
     for (let i = 0; i < playerHand.length; i++) {
-        let card = playerHand[i].slice(0, -1);
+        let card = playerHand[i].slice(0, -1)
 
-        if (card === 'A' || card === 'K' || card === 'Q' || card === 'J') {
-            score += 10;
+        if (card === 'A') {
+            playerScore += 11
+        } else if (card === 'K' || card === 'Q' || card === 'J') {
+            playerScore += 10;
         } else {
-            score += Number(card);
+            playerScore += Number(card);
         }
     }
 
-    return score;
+    return playerScore;
 }
 
 function calculateDealerScore() {
-    score = 0;
+    dealerScore = 0;
 
     for (let i = 0; i < dealerHand.length; i++) {
         let card = dealerHand[i].slice(0, -1);
 
-        if (card === 'A' || card === 'K' || card === 'Q' || card === 'J') {
-            score += 10;
+        if (card === 'A') {
+            dealerScore += 11
+        } else if (card === 'K' || card === 'Q' || card === 'J') {
+            dealerScore += 10;
         } else {
-            score += Number(card);
+            dealerScore += Number(card);
         }
     }
 
-    return score;
+    return dealerScore;
 }
 
 /*
-
+What this code basically does is that it render the game using the speciifc elements we want to be displayed in the web page through the usage of textContent
+function which will enable us to display whatever text we need to be displayed in the webpage. Additionally, we could use speciifc syntaxes we need for it
+such as array iterators or special string printing and whatnot as shown below. 
 */
 
-function renderBlackjack(){
-    playerHandEl.textContent = playerHand.join(' ');
-    dealerHandEl.textContent = dealerHand.join(' ');
+function renderBlackjack() {
+    playerHandEl.textContent = playerHand.join(', ');
+    dealerHandEl.textContent = dealerHand.join(', ');
     playerScoreEl.textContent = `Player score is: ${playerScore}`;
     dealerScoreEl.textContent = `Dealer score is: ${dealerScore}`;
+    gameMessageEl.textContent = gameMessage;
 }
 /*
 What this code basically does is that it starts a game to where a user is introduced with 2 shuffled cards, as well as the dealer recieves 2 shuffled cards. 
@@ -138,16 +146,37 @@ function startGame() {
 }
 
 /*
+What this code basically does is that the user is able to press the hit button after starting the game, that depends if the user wants to continue or not.
+We use the push iterator to add one more card for the player, through the already deck.pop array, which consists of what the player has in their hands. Then 
+we run a if, else if, else logic for how the win or loss works here, if the player exceeds 21 score, we lose, if the dealer does, they lose; and then we render
+the function so that it displays in the webpage. 
+*/
+
+function hitAction() {
+    playerHand.push(deck.pop());
+
+    playerScore = calculatePlayerScore();
+    dealerScore = calculateDealerScore();
+
+    if (playerScore > 21) {
+        gameMessage = 'Player Busted... Dealer Wins 😭'
+    } else if (dealerScore > 21) {
+        gameMessage = 'Dealer Busted... Player Wins 😀'
+    } else {
+        gameMessage = ' ';
+    };
+
+    renderBlackjack();
+}
+
+/*
 
 */
 
-// function hitAction(){
-//     card = deck.pop();
-// }
-
-
+function standAction(){
+    renderBlackjack();
+}
 /*----------------------------- Event Listeners -----------------------------*/
 
 startButtonEl.addEventListener('click', startGame);
-hitButtonEl.addEventListener('click', hit);
-standButtonEl.addEventListener('click', stand);
+hitButtonEl.addEventListener('click', hitAction);
