@@ -78,7 +78,7 @@ function calculatePlayerScore() {
 
         while (playerScore > 21 && aceWeight > 0) {
             playerScore -= 10;
-            aceWeight--   
+            aceWeight--
         }
     }
 
@@ -104,7 +104,7 @@ function calculateDealerScore() {
 
         while (dealerScore > 21 && aceWeight > 0) {
             dealerScore -= 10;
-            aceWeight--   
+            aceWeight--
         }
     }
 
@@ -154,11 +154,10 @@ function startGame() {
 }
 
 function hitAction() {
-    if (!gameStarted) {
-        return;
+    if (gameStarted === false) {
+    } else {
+        playerHand.push(deck.pop());
     };
-
-    playerHand.push(deck.pop());
 
     playerScore = calculatePlayerScore();
     dealerScore = calculateDealerScore();
@@ -186,8 +185,9 @@ function hitAction() {
 }
 
 function standAction() {
-    if (!gameStarted) {
-        return;
+    if (gameStarted === false) {
+    } else {
+        playerHand.push(deck.pop());
     };
 
     while (dealerScore <= 16) {
@@ -195,12 +195,12 @@ function standAction() {
         dealerScore = calculateDealerScore();
     };
 
-        winnerDecision();
+    winnerDecision();
 
-        renderBlackjack();
+    renderBlackjack();
 }
 
-function winnerDecision(){
+function winnerDecision() {
     gameStarted = false;
     hitButtonEl.disabled = true;
     standButtonEl.disabled = true;
@@ -220,7 +220,7 @@ function winnerDecision(){
     renderBlackjack();
 }
 
-function restartGame(){
+function restartGame() {
     playerHand = [];
     dealerHand = [];
     playerScore = 0;
