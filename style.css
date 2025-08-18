@@ -22,21 +22,21 @@ h3 {
 
 #player-hand {
   margin: 10px auto;
-  min-height: 50px;
+  min-height: 20px;
   padding: 10px;
   border: 2px white;
   border-radius: 10px;
-  width: 250px;
+  width: 50px;
   background-color: black;
 }
 
 #dealer-hand {
   margin: 10px auto;
-  min-height: 50px;
+  min-height: 20px;
   padding: 10px;
   border: 2px white;
   border-radius: 10px;
-  width: 250px;
+  width: 50px;
   background-color: black;
 }
 
