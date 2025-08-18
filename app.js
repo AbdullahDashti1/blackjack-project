@@ -134,17 +134,17 @@ function startGame() {
     standButtonEl.disabled = false;
 
     if (playerScore === 21 && dealerScore === 21) {
-        gameMessage = "Tie 🤝";
+        gameMessage = "Tie";
         gameStarted = false;
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
     } else if (playerScore === 21) {
-        gameMessage = "Player Wins 👑";
+        gameMessage = "Player Wins";
         gameStarted = false;
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
     } else if (dealerScore === 21) {
-        gameMessage = "Dealer Wins 💩";
+        gameMessage = "Dealer Wins";
         gameStarted = false;
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
@@ -164,7 +164,7 @@ function hitAction() {
     dealerScore = calculateDealerScore();
 
     if (playerScore > 21) {
-        gameMessage = 'Player Busted... Dealer Wins 💩';
+        gameMessage = 'Player Busted... Dealer Wins';
         gameStarted = false;
         standButtonEl.disabled = true;
         hitButtonEl.disabled = true;
@@ -174,7 +174,7 @@ function hitAction() {
         standButtonEl.disabled = true;
         hitButtonEl.disabled = true;
     } else if (dealerScore === 21) {
-        gameMessage = "Dealer Wins 💩";
+        gameMessage = "Dealer Wins";
         gameStarted = false;
         hitButtonEl.disabled = true;
         standButtonEl.disabled = true;
@@ -206,15 +206,15 @@ function winnerDecision(){
     standButtonEl.disabled = true;
 
     if (playerScore > 21) {
-        gameMessage = 'Player Busted... Dealer Wins 💩';
+        gameMessage = 'Player Busted... Dealer Wins';
     } else if (dealerScore > 21) {
-        gameMessage = 'Dealer Busted... Player Wins 👑';
+        gameMessage = 'Dealer Busted... Player Wins';
     } else if (playerScore > dealerScore) {
-        gameMessage = 'Player Wins 👑';
+        gameMessage = 'Player Wins';
     } else if (playerScore < dealerScore) {
-        gameMessage = 'Dealer Wins 💩';
+        gameMessage = 'Dealer Wins';
     } else if (playerScore === dealerScore) {
-        gameMessage = 'Tie 🤝';
+        gameMessage = 'Tie';
     };
 
     renderBlackjack();
