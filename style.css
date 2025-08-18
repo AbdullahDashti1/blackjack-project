@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #0b3d0b; 
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 3rem;
+  color: gold;
+  text-shadow: 2px 2px 5px black;
+}
+
+h3 {
+  margin-top: 25px;
+  color: white;
+}
+
+
+#player-hand {
+  margin: 10px auto;
+  min-height: 50px;
+  padding: 10px;
+  border: 2px white;
+  border-radius: 10px;
+  width: 250px;
+  background-color: black;
+}
+
+#dealer-hand {
+  margin: 10px auto;
+  min-height: 50px;
+  padding: 10px;
+  border: 2px white;
+  border-radius: 10px;
+  width: 250px;
+  background-color: black;
+}
+
+#game-message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: gold; 
+  text-shadow: 1px 1px 3px black;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 6px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#start-button {
+  background-color: green; 
+  color: white;
+}
+
+#restart-button {
+  background-color: red; 
+  color: white;
+}
+
+#hit-button {
+  background-color: blue; 
+  color: white;
+}
+
+#stand-button {
+  background-color: orange; 
+  color: white;
+}
