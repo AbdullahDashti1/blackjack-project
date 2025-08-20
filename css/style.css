@@ -24,28 +24,52 @@ h3 {
 
 #player-hand {
   margin: 10px;             
-  min-height: 20px;
+  min-height: 40px;
   padding: 10px;
   border: 2px solid white;
   border-radius: 10px;
-  width: 50px;
-  background-color: black;
+  width: 200px;
+  background-color: white;
   display: flex;            
   justify-content: center;  
   align-items: center;     
 }
+
 #dealer-hand {
   margin: 10px;             
-  min-height: 20px;
+  min-height: 40px;
   padding: 10px;
   border: 2px solid white;
   border-radius: 10px;
-  width: 50px;
-  background-color: black;
+  width: 200px;
+  background-color: white;
   display: flex;            
   justify-content: center;  
   align-items: center;     
 }
+
+.hand {
+  display: flex;
+  gap: 10px;     
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.hand img {
+  width: 80px;     
+  height: auto;    
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+.card {
+  width: 60px;
+  margin: 5px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px black;
+}
+
 
 #game-message {
   margin-top: 20px;

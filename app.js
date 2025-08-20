@@ -111,9 +111,50 @@ function calculateDealerScore() {
     return dealerScore;
 }
 
+function cardImage(card) {
+    let value = card.slice(0, card.length - 1);
+    let suit = card.slice(-1);
+
+    if (suit === '♠') {
+        suit = 'spades';
+    } else if (suit === '♥') {
+        suit = 'hearts';
+    } else if (suit === '♦') {
+        suit = 'diamonds';
+    } else if (suit === '♣') {
+        suit = 'clubs';
+    }
+
+    if (value === 'A') {
+        value = 'A';
+    } else if (value === 'K') {
+        value = 'K';
+    } else if (value === 'Q') {
+        value = 'Q';
+    } else if (value === 'J') {
+        value = 'J';
+    } else {
+        if (value.length === 1)  value = '0' + value;
+        value = 'r' + value;
+    }
+
+    return `${suit}/${suit}-${value}`;
+}
+
+
 function renderBlackjack() {
-    playerHandEl.textContent = playerHand.join(', ');
-    dealerHandEl.textContent = dealerHand.join(', ');
+    playerHandEl.innerHTML = "";
+    for (let i = 0; i < playerHand.length; i++) {
+        let card = playerHand[i];
+        playerHandEl.innerHTML += `<img src="images/${cardImage(card)}.svg">`;
+    }
+
+    dealerHandEl.innerHTML = "";
+    for (let i = 0; i < dealerHand.length; i++) {
+        let card = dealerHand[i];
+        dealerHandEl.innerHTML += `<img src="images/${cardImage(card)}.svg">`;
+    }
+    
     playerScoreEl.textContent = `Player score is: ${playerScore}`;
     dealerScoreEl.textContent = `Dealer score is: ${dealerScore}`;
     gameMessageEl.textContent = gameMessage;
@@ -186,8 +227,6 @@ function hitAction() {
 
 function standAction() {
     if (gameStarted === false) {
-    } else {
-        playerHand.push(deck.pop());
     };
 
     while (dealerScore <= 16) {
