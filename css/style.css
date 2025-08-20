@@ -24,11 +24,11 @@ h3 {
 
 #player-hand {
   margin: 10px;             
-  min-height: 40px;
+  min-height: 20px;
   padding: 10px;
   border: 2px solid white;
   border-radius: 10px;
-  width: 200px;
+  width: 400px;
   background-color: white;
   display: flex;            
   justify-content: center;  
@@ -37,11 +37,11 @@ h3 {
 
 #dealer-hand {
   margin: 10px;             
-  min-height: 40px;
+  min-height: 20px;
   padding: 10px;
   border: 2px solid white;
   border-radius: 10px;
-  width: 200px;
+  width: 400px;
   background-color: white;
   display: flex;            
   justify-content: center;  
