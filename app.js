@@ -11,7 +11,6 @@ let dealerHand;
 let playerScore;
 let dealerScore;
 let gameMessage;
-let gameState;
 let gameStarted = false;
 let aceWeight;
 
