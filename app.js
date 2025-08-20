@@ -125,16 +125,10 @@ function cardImage(card) {
         suit = 'clubs';
     }
 
-    if (value === 'A') {
-        value = 'A';
-    } else if (value === 'K') {
-        value = 'K';
-    } else if (value === 'Q') {
-        value = 'Q';
-    } else if (value === 'J') {
-        value = 'J';
+    if (value === 'A' || value === 'K' || value === 'Q' || value === 'J') {
+        value = value;
     } else {
-        if (value.length === 1)  value = '0' + value;
+        if (value.length === 1) value = '0' + value; 
         value = 'r' + value;
     }
 
