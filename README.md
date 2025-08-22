@@ -1,6 +1,7 @@
 # blackjack-project
 
 <img width="752" height="918" alt="image" src="https://github.com/user-attachments/assets/4779b0d6-99c9-476e-8b62-82b7a3c60274" />
+
 Blackjack game:
 Blackjack is a common playing card game that is played by millions and millions of users, specifically known for its prescence in the Casino. It is commonly known as a gambling game, but can be played without betting, and its core focus is it to win over the dealer by the score player has, and the determinent of the score are the weighting of the cards. 
 
