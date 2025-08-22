@@ -1,5 +1,11 @@
 # blackjack-project
 
+Blackjack game:
+<img width="752" height="918" alt="image" src="https://github.com/user-attachments/assets/4779b0d6-99c9-476e-8b62-82b7a3c60274" />
+
+Deployed Game GitHub:
+https://abdullahdashti1.github.io/blackjack-project/
+
 User Stories:
 - As a user, I want to see a welcome screen when I open the game to know it’s ready to play.
 - As a user, I want to be dealt two cards at the start so that I can begin playing Blackjack.
