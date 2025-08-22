@@ -1,10 +1,20 @@
 # blackjack-project
 
-Blackjack game:
 <img width="752" height="918" alt="image" src="https://github.com/user-attachments/assets/4779b0d6-99c9-476e-8b62-82b7a3c60274" />
+Blackjack game:
+Blackjack is a common playing card game that is played by millions and millions of users, specifically known for its prescence in the Casino. It is commonly known as a gambling game, but can be played without betting, and its core focus is it to win over the dealer by the score player has, and the determinent of the score are the weighting of the cards. 
+
+Selection of Blackjack:
+The reason why I choose this game specifically is because it fits in my interest as I was once very attached to card games and playing magic with it. I also chose this game because I wanted to challenge my coding understanding and try something very heavy with heavy logic and designing. 
 
 Deployed Game GitHub:
 https://abdullahdashti1.github.io/blackjack-project/
+
+Technology used:
+HTML, CSS, Javascript, 52 Playing Card Images.
+
+Future Enhancements:
+For the future as I gain more insights and delve into programming, I may use the opprtunity to make 4 players as realistic, improve the designing of the game, as well as narrow the chunk of code for readability purposes. 
 
 User Stories:
 - As a user, I want to see a welcome screen when I open the game to know it’s ready to play.
