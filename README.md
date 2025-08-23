@@ -1,6 +1,6 @@
 # blackjack-project
 
-<img width="752" height="918" alt="image" src="https://github.com/user-attachments/assets/4779b0d6-99c9-476e-8b62-82b7a3c60274" />
+<img width="1637" height="766" alt="image" src="https://github.com/user-attachments/assets/81ece536-b52b-46aa-b5e7-6188f47073bc" />
 
 ## Blackjack game:
 
