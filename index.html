@@ -13,48 +13,51 @@
 <body>
     <h1>Blackjack</h1>
 
-    <div id="instructions">
-        <h2>How to Play Blackjack</h2>
-        <p>Welcome to Blackjack. The objective of the game is to get as close to 21 as you can without going over.</p>
-        <ul>
-            <li>Number cards are worth based on the cards value.</li>
-            <li>Kings, Queens, and Jacks are worth 10.</li>
-            <li>Aces are worth 1 or 11, depends on if the cards exceed 21 based on calculation.</li>
-            <li>The player and the dealer begin with 2 cards.</li>
-            <li>Click "Hit" if you wish to draw another card.</li>
-            <li>Click "Stand" if you wish to finish your turn, to which the dealer begin their round.</li>
-            <li>The dealer will play until their satisfied with their postion.</li>
-            <li>The closest person to the 21th score will win.</li>
-        </ul>
+    <div id="main-layout">
+
+        <div id="game-content">
+            <div>
+                <h3>START / RESTART</h3>
+                <button id='start-button'>Start Game</button>
+                <button id='restart-button'>Restart Game</button>
+            </div>
+
+            <div class="game-position">
+                <h3>Player:</h3>
+                <div id='player-hand' class="hand"></div>
+                <p id='player-score'></p>
+            </div>
+
+            <h3>Dealer:</h3>
+            <div id='dealer-hand' class="hand"></div>
+            <p id='dealer-score'></p>
+
+            <div>
+                <h3>ACTION:</h3>
+                <button id='hit-button'>HIT</button>
+                <button id='stand-button'>STAND</button>
+            </div>
+
+            <p id='game-message'></p>
+        </div>
+
+        <div id="instructions">
+            <h2>How to Play Blackjack</h2>
+            <p>Welcome to Blackjack. The objective of the game is to get as close to 21 as you can without going over.
+            </p>
+            <ul>
+                <li>Number cards are worth based on the cards value.</li>
+                <li>Kings, Queens, and Jacks are worth 10.</li>
+                <li>Aces are worth 1 or 11, depending on if the total exceeds 21.</li>
+                <li>The player and the dealer begin with 2 cards.</li>
+                <li>Click "Hit" to draw another card.</li>
+                <li>Click "Stand" to finish your turn and let the dealer play.</li>
+                <li>The dealer will play until they reach at least 17.</li>
+                <li>The closest score to 21 wins.</li>
+            </ul>
+        </div>
+
     </div>
-
-    <div>
-        <h3>START / RESTART</h3>
-        <button id='start-button'>Start Game</button>
-        <button id='restart-button'>Restart Game</button>
-    </div>
-
-    <div class="game-position">
-        <h3>Player:</h3>
-        <div id='player-hand' class="hand"></div>
-        <p id='player-score'></p>
-    </div>
-
-
-    <h3>Dealer:</h3>
-    <div id='dealer-hand' class="hand"></div>
-    <p id='dealer-score'></p>
-    </div>
-
-    </div>
-
-    <div>
-        <h3>ACTION:</h3>
-        <button id='hit-button'>HIT</button>
-        <button id='stand-button'>STAND</button>
-    </div>
-
-    <p id='game-message'></p>
 
     <script src="app.js"></script>
 </body>
