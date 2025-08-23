@@ -22,24 +22,22 @@ h3 {
   color: white;
 }
 
-#game-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 30px;
-  margin: 20px;
+#main-layout {
+  display: flex;     
+  gap: 30px;               
+  margin: 20px;           
 }
 
 #game-content {
-  flex: 2;
+  flex: 2;                 
 }
 
 #instructions {
-  flex: 1;
-  padding: 15px;
-  border: 1px solid gold;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
+  flex: 1;               
+  padding: 10px;          
+  border: 1px solid gold; 
+  border-radius: 8px;    
+  background-color: rgba(255, 255, 255, 0.1); 
   text-align: left;
 }
 
@@ -51,32 +49,17 @@ h3 {
 
 #instructions ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
 }
 
 #instructions li {
-  margin: 6px 0;
-  font-size: 0.95rem;
+  margin: 5px 0;
+  font-size: 14px;
 }
 
-#instructions {
-  margin: 20px;
-  padding: 10px;
-  border: 1px solid gold;
-  border-radius: 8px;
-}
-
-#instructions h2 {
-  color: gold;
-  margin-bottom: 8px;
-}
-
-#instructions ul {
-  padding-left: 20px;
-}
-
-#instructions li {
-  margin: 4px 0;
+#instructions p {
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 #player-hand {
